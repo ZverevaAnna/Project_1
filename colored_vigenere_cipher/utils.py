@@ -39,12 +39,12 @@ def get_color_sequence(vowel_count, consonant_count):
     if vowel_count >= consonant_count:
         colors = [
             Fore.RED,
-            Fore.LIGHTYELLOW_EX,  # Используем LIGHTYELLOW_EX вместо ORANGE
+            Fore.LIGHTYELLOW_EX,
             Fore.YELLOW,
             Fore.GREEN,
             Fore.BLUE,
-            Fore.LIGHTBLUE_EX,  # Используем LIGHTBLUE_EX вместо INDIGO
-            Fore.LIGHTMAGENTA_EX  # Используем LIGHTMAGENTA_EX вместо VIOLET
+            Fore.LIGHTBLUE_EX,
+            Fore.LIGHTMAGENTA_EX
         ]
     else:
         colors = [Fore.MAGENTA, Fore.GREEN]
