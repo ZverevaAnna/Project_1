@@ -23,7 +23,7 @@ def count_vowels_and_consonants(key):
     :param key: Ключ шифрования
     :return: Количество гласных и согласных букв
     """
-    vowel_count = sum(1 for c in key if is_vowel(c))
+    vowel_count = sum(1 for k in key if is_vowel(k))
     consonant_count = len(key) - vowel_count
     return vowel_count, consonant_count
 
