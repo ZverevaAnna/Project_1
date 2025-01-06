@@ -7,7 +7,7 @@ from colorama import Fore, Style
 
 def is_vowel(letter):
     """
-    Проверяет, является ли переданная буква гласной.
+    Проверяет, является ли переданная буква гласной
 
     :param letter: Буква для проверки
     :return: True, если буква является гласной, иначе False
@@ -18,7 +18,7 @@ def is_vowel(letter):
 
 def count_vowels_and_consonants(key):
     """
-    Подсчитывает количество гласных и согласных букв в переданном ключе.
+    Подсчитывает количество гласных и согласных букв в переданном ключе
 
     :param key: Ключ шифрования
     :return: Количество гласных и согласных букв
@@ -30,7 +30,7 @@ def count_vowels_and_consonants(key):
 
 def get_color_sequence(vowel_count, consonant_count):
     """
-    Возвращает последовательность цветов для окрашивания текста в зависимости от соотношения гласных и согласных.
+    Возвращает последовательность цветов для окрашивания текста в зависимости от соотношения гласных и согласных
 
     :param vowel_count: Количество гласных букв
     :param consonant_count: Количество согласных букв
@@ -53,7 +53,7 @@ def get_color_sequence(vowel_count, consonant_count):
 
 def apply_colors_to_result(result, colors):
     """
-    Применяет заданные цвета к каждой букве результата.
+    Применяет заданные цвета к каждой букве результата
 
     :param result: Исходный результат шифрования/расшифровки
     :param colors: Последовательность цветов для применения
@@ -69,7 +69,7 @@ def apply_colors_to_result(result, colors):
 
 def vigenere_cipher(text, key, mode='encrypt'):
     """
-    Выполняет шифрование или расшифровку текста с использованием шифра Виженера.
+    Выполняет шифрование или расшифровку текста с использованием шифра Виженера
 
     :param text: Текст для шифрования/расшифровки
     :param key: Ключ шифрования
@@ -82,24 +82,20 @@ def vigenere_cipher(text, key, mode='encrypt'):
 
     for char in text:
         if char.isalpha():
-            # Получаем ASCII-код символа
-            char_code = ord(char.upper())
+            # Получаем индекс символа в алфавите
+            char_code = ord(char.upper()) - ord('A')
 
-            # Если буква строчная, то добавляем 32 к коду (чтобы привести его к верхнему регистру)
-            if char.islower():
-                char_code += 32
-
-            # Получаем ASCII-код символа ключа
+            # Получаем индекс символа ключа
             key_char_code = ord(key[key_index].upper()) - ord('A')
 
             # Шифруем или дешифруем символ
             if mode == 'encrypt':
-                new_char_code = (char_code + key_char_code) % 26 + ord('A')
+                new_char_code = (char_code + key_char_code) % 26
             elif mode == 'decrypt':
-                new_char_code = (char_code - key_char_code) % 26 + ord('A')
+                new_char_code = (char_code - key_char_code) % 26
 
             # Преобразуем новый код обратно в символ
-            encrypted_char = chr(new_char_code)
+            encrypted_char = chr(new_char_code + ord('A'))
 
             # Добавляем результат в итоговую строку
             encrypted_text += encrypted_char.lower() if char.islower() else encrypted_char
